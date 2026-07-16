@@ -3,6 +3,7 @@
 /* Chữ thường, không in nghiêng */
 * {
   box-sizing: border-box;
+  /* Khi dùng thì lúc set padding hay border phần nội dung sẽ co nhỏ lại cách khung 1 khoảng. Phần khung ngoài luôn cố định kích thước */
 }
 
 :root {
@@ -67,7 +68,7 @@ a {
 .section-desc {
   margin-top: 18px;
   color: #575f66;
-  font-size: 1.8rme;
+  font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.67; /* 166.667% */
 }
@@ -245,7 +246,8 @@ bottom: - => xuống */
 
 .service__desc {
   width: 468px;
-  margin: 0 auto;
+  margin: 18px auto 0;
+  /* margin: 0 auto; Không ghi như vậy được vì nó sẽ ghi đè chỗ margin-top: 18px ở lớp chung section-desc phía trên */
 }
 
 /* p là phần tử block nên mặc định rộng 100% thẻ cha */
@@ -354,4 +356,67 @@ bottom: - => xuống */
 
 .service__btn {
   margin-top: 55px;
+}
+
+/* ============= work ============= */
+
+.work {
+  background: #f6fbff;
+  padding: 100px 0;
+}
+
+.work__desc {
+  width: 468px;
+}
+
+.work__list {
+  margin-top: 86px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Tạo Grid Layout gồm 3 cột có chiều rộng bằng nhau */
+  column-gap: 30px;
+  /* Tạo khoảng cách 30px giữa các cột */
+}
+
+.work-item {
+  padding: 43px;
+  border-radius: 4px;
+  background: #fff;
+  border: 16px solid #eaf6ff;
+  transition: 0.25s;
+}
+
+.work-item:hover {
+  /* Khi di chuột vào:
+       - Đổi màu viền để nổi bật hơn
+       - Nâng phần tử lên 16px tạo hiệu ứng tương tác */
+  border-color: #2e80ce;
+  transform: translateY(-16px);
+}
+
+.work-item__heading {
+  margin-top: 18px;
+  color: #10375c;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1.38; /* 138.462% */
+}
+
+.work-item__desc {
+  margin-top: 28px;
+  color: #575f66;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.75; /* 175% */
+}
+
+.work-item__more {
+  margin-top: 18px;
+  /* Chuyển sang inline-block để có thể thiết lập kích thước
+   và để margin, padding, border theo chiều dọc hoạt động đúng */
+  display: inline-block;
+  color: #2e80ce;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.75; /* 175% */
 }
