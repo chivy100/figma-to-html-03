@@ -1,5 +1,10 @@
+/* Vào figma -> view -> layout grid để xuất hiện lưới kiểm tra xem tất cả các phần có nằm trong cùng 1 độ rộng hay không. Phím tắt là Shift+G */
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --header-bg: #10375c;
 }
 
 html {
@@ -7,6 +12,122 @@ html {
 }
 
 body {
+  /* Tất cả thuộc tính sẽ tự động thừa kế xuống các thẻ con */
   font-size: 1.6rem;
   font-family: "Sora", sans-serif;
+}
+
+/* ================= common ================= */
+.container {
+  width: 1170px;
+  /* Mặc định giữ chiều rộng theo width.
+   Khi màn hình quá nhỏ, container tự co lại và luôn chừa tổng 48px
+   (24px bên trái + 24px bên phải). */
+  max-width: calc(100% -48px);
+  /* Căn cả box container ra giữa trang */
+  margin: 0 auto;
+}
+
+a {
+  /* Bỏ gạch chân tất cả thẻ <a> */
+  text-decoration: none;
+}
+
+.btn {
+  /* Chuyển thẻ <a> sang inline-block để set width, height, padding...
+   nhưng vẫn nằm cùng dòng như inline */
+  display: inline-block;
+  min-width: 205px;
+  line-height: 60px;
+  background: #2e80ce;
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  border-radius: 999px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+/* ================= header ================= */
+.header {
+  padding-top: 30px;
+  background: var(--header-bg);
+  /* Giúp phần header hiển thị tối thiểu bằng chiều cao màn hình,
+   tạo giao diện full-screen và tập trung sự chú ý của người dùng */
+  min-height: 100vh;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__list {
+  display: flex;
+}
+
+.header__action--login,
+.navbar__link {
+  /* Tạo khoảng cách giữa các link và tăng vùng có thể click,
+     giúp người dùng dễ bấm hơn mà không cần đưa chuột chính xác vào chữ */
+  padding: 8px 21px;
+  color: #c9d2da;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.75; /* 175% */
+}
+
+/* Tất cả link khi di chuột vào và link được active đều chung thuộc tính */
+.navbar__link:hover,
+.navbar__link--active {
+  /* Tạo chữ đậm giả bằng text-shadow để tránh layout bị xê dịch
+       khi đổi từ font-weight: 300 sang 400 */
+  text-shadow: 1px 0 0 currentColor;
+  color: #fff;
+}
+
+/* Tạo chấm tròn phía trước menu active */
+.navbar__link--active::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  /*Dùng position: relative
+   để tinh chỉnh vị trí của chấm */
+  position: relative; /* Dùng để dịch chuyển phần tử so với vị trí ban đầu của chính nó */
+  /* dịch lên 3px và sang trái 8px so với vị trí mặc định của nó */
+  top: -3px;
+  right: 8px;
+}
+/* position: relative, quy tắc:
+
+top: +  => xuống
+top: -  => lên
+
+left: + => sang phải
+left: - => sang trái
+
+right: + => sang trái
+right: - => sang phải
+
+bottom: + => lên
+bottom: - => xuống */
+
+.header__action--signup {
+  min-width: 144px;
+  line-height: 44px;
+  font-size: 1.6rem;
+}
+
+.header__action--login {
+  /* Kế thừa các thuộc tính chung từ .navbar__link,
+       chỉ cần chỉnh thêm khoảng cách bên phải */
+  margin-right: 7px;
 }
