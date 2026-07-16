@@ -1,4 +1,6 @@
 /* Vào figma -> view -> layout grid để xuất hiện lưới kiểm tra xem tất cả các phần có nằm trong cùng 1 độ rộng hay không. Phím tắt là Shift+G */
+/* font-style: normal; */
+/* Chữ thường, không in nghiêng */
 * {
   box-sizing: border-box;
 }
@@ -29,6 +31,7 @@ body {
   margin: 0 auto;
 }
 
+/* Thẻ <a> mặc định có cursor: pointer nên hover sẽ hiện hình bàn tay */
 a {
   /* Bỏ gạch chân tất cả thẻ <a> */
   text-decoration: none;
@@ -52,6 +55,23 @@ a {
 .btn:hover {
   opacity: 0.9;
 }
+
+.section-heading {
+  color: #10375c;
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 1.2; /* 120% */
+  letter-spacing: -1px;
+}
+
+.section-desc {
+  margin-top: 18px;
+  color: #575f66;
+  font-size: 1.8rme;
+  font-weight: 300;
+  line-height: 1.67; /* 166.667% */
+}
+
 /* ================= header ================= */
 
 .header {
@@ -168,7 +188,6 @@ bottom: - => xuống */
   margin-top: 22px;
   color: #c9d2da;
   font-size: 1.8rem;
-  font-style: normal;
   /* Mặc định font-weight: 400. Nên lớp nào có thì có thể bỏ đi */
   font-weight: 300;
   line-height: 1.67; /* 166.667% */
@@ -209,4 +228,130 @@ bottom: - => xuống */
 .hero__img-small {
   width: 210px;
   height: 410px;
+}
+
+/* ================= main ================= */
+
+/* ============= service ============= */
+.service {
+  padding: 170px 0;
+  background: #fff;
+}
+
+.service__heading,
+.service__desc {
+  text-align: center;
+}
+
+.service__desc {
+  width: 468px;
+  margin: 0 auto;
+}
+
+/* p là phần tử block nên mặc định rộng 100% thẻ cha */
+
+/* text-align: center; chỉ căn giữa NỘI DUNG văn bản bên trong thẻ p,
+   không căn giữa chính thẻ p */
+
+/* Khi set width: 468px, thẻ p không còn rộng 100% nữa,
+   nên nó sẽ nằm sát trái theo mặc định */
+
+/* margin: 0 auto; dùng để căn giữa chính khối p
+   trong thẻ cha khi khối có width xác định */
+
+/* Điểm dễ nhầm là:
+   text-align: center → căn giữa chữ.
+   margin: 0 auto → căn giữa khối (box). */
+
+.service__row {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service__img {
+  width: 570px;
+  height: 570px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.service-item {
+  padding: 21px;
+  /* Tạo khoảng đệm bên trong card.
+       Nội dung không dính sát viền. */
+  display: flex;
+  /* Xếp icon và phần text nằm ngang. */
+  width: 470px;
+  /* Chiều rộng cố định của mỗi service card. */
+  border-radius: 10px;
+  /* Bo tròn 4 góc card. */
+  background: #fff;
+  /* Nền trắng cho card. */
+  transition: 0.25s;
+  /* tạo hiệu ứng chuyển đổi mượt trong 0.25 giây  */
+}
+
+.service-item:hover {
+  position: relative;
+  /* position: relative; để nhất từng item ra khi hover 
+       tránh để bóng các item đè lên nhau */
+
+  box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.05);
+  /* Đổ bóng khi rê chuột vào card
+       tạo hiệu ứng nổi lên khỏi nền. */
+}
+
+.service-item:hover .service-item__icon {
+  color: #fff;
+  background: #2e80ce;
+  /* Hover card -> icon bên trong chuyển nền xanh, icon màu trắng */
+}
+
+.service-item__icon {
+  width: 60px;
+  height: 60px;
+  /* Tạo khung icon hình vuông 60x60px. */
+  border-radius: 30px;
+  /* Biến hình vuông thành hình tròn.
+       30px = 1/2 của 60px. */
+  background: #eff6fd;
+  /* Màu nền xanh nhạt phía sau icon. */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
+  /* Đổ bóng nhẹ cho vòng tròn icon. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Căn icon SVG/ảnh vào chính giữa vòng tròn. */
+  flex-shrink: 0;
+  /* Không cho icon bị co lại khi thiếu chỗ. */
+  margin-right: 19px;
+  /* Tạo khoảng cách giữa icon và phần nội dung. */
+  transition: 0.25s;
+  /* tạo hiệu ứng chuyển đổi mượt trong 0.25 giây  */
+}
+
+.service-item__heading {
+  color: #10375c;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: normal;
+  /* Chiều cao dòng mặc định theo font */
+}
+
+.service-item__desc {
+  margin-top: 8px;
+  color: #575f66;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.75; /* 175% */
+  /* Chiều cao dòng gấp 1.75 lần cỡ chữ */
+  /* line-height = 1.75 × font-size
+            = 1.75 × 1.6rem
+            = 2.8rem */
+}
+
+.service__btn {
+  margin-top: 55px;
 }
