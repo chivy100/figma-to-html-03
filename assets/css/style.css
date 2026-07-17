@@ -22,6 +22,19 @@ body {
 
 /* ================= common ================= */
 
+input,
+textarea,
+select,
+button {
+  /* Kế thừa font chữ từ phần tử cha.
+     Mặc định các thẻ form thường dùng font của trình duyệt/hệ điều hành,
+     nên cần inherit để đồng bộ với font của toàn bộ website. */
+  font-family: inherit;
+  /* Kế thừa kích thước chữ từ phần tử cha.
+     Tránh tình trạng font-size của form control khác với nội dung xung quanh. */
+  font-size: inherit;
+}
+
 .container {
   width: 1170px;
   /* Mặc định giữ chiều rộng theo width.
@@ -817,7 +830,13 @@ bottom: - => xuống */
 /* ============= appointment ============= */
 
 .appointment {
-  margin: 85px 0;
+  margin-top: 85px;
+  /* Chỉ tạo khoảng cách phía trên 85px.
+   Không dùng margin: 85px 0 vì phía dưới còn footer.
+   Nếu footer cũng có margin-top thì margin-bottom của appointment
+   và margin-top của footer có thể bị margin collapse.
+   Khi đó hai margin sẽ không cộng lại, mà lấy giá trị lớn hơn,
+   gây khó kiểm soát khoảng cách thực tế giữa các section. */
 }
 
 .appointment__inner {
@@ -843,4 +862,144 @@ bottom: - => xuống */
 
 .appointment__btn {
   margin-top: 38px;
+}
+
+/* ================= footer ================= */
+
+/* ==================== footer ==================== */
+
+.footer {
+  margin-top: 170px;
+  /* Tạo khoảng cách 170px giữa footer và section phía trên.
+       Margin nằm bên ngoài phần tử.
+       Nếu phần tử phía trên cũng có margin-bottom thì có thể xảy ra
+       margin collapse: hai margin không cộng lại mà margin lớn hơn sẽ được dùng. */
+  padding-top: 100px;
+  /* Tạo khoảng trống 100px bên trong footer, phía trên nội dung.
+       Padding nằm bên trong phần tử và không bị margin collapse. */
+  background: #10375c;
+  /* Màu nền xanh đậm của footer. */
+  font-family: "Open Sans", sans-serif;
+  /* Thuộc tính font-family có tính kế thừa (inherit).
+       Các phần tử con bên trong footer sẽ mặc định dùng Open Sans
+       nếu không được khai báo font-family khác. */
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr 0.4fr 1fr;
+  column-gap: 78px;
+}
+
+.footer__desc {
+  margin-top: 21px;
+  color: #a9b3bb;
+  font-size: 1.6rem;
+  line-height: 1.75; /* 175% */
+}
+
+.footer__heading {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.75; /* 175% */
+}
+
+.footer__list {
+  margin: 20px 0 28px;
+}
+
+.footer__link {
+  color: #a9b3bb;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+  /* Chiều cao mỗi dòng = 1.86 × font-size.
+       1.4rem × 1.86 ≈ 2.604rem ≈ 26px.
+       Dùng số thuần (unitless) để line-height tự kế thừa tốt hơn. */
+  white-space: nowrap;
+  /* Không cho phép xuống dòng.
+       Toàn bộ nội dung phải nằm trên một dòng.
+       Nếu không đủ chỗ, nội dung sẽ tràn ra ngoài hoặc bị xử lý bởi
+       các thuộc tính khác như overflow, text-overflow. */
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__item {
+  margin-bottom: 10px;
+}
+.footer__social {
+  margin: 20px 0 28px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.footer__social-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  color: #2e80ce;
+  transition: 0.25s;
+}
+
+.footer__social-btn:hover {
+  background: #2e80ce;
+  color: #fff;
+}
+
+.footer-form {
+  display: flex;
+  column-gap: 12px;
+  margin-top: 10px;
+}
+
+.footer-form__input {
+  width: 212px;
+  height: 46px;
+  border-radius: 4px;
+  border: 1px solid #406181;
+  background: transparent;
+  outline: none;
+  color: #fff;
+}
+
+.footer-form__input::placeholder {
+  color: #9ca8b1;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+.footer-form__submit {
+  width: 108px;
+  height: 46px;
+  border-radius: 4px;
+  background: #2e80ce;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.86; /* 185.714% */
+  border: none;
+}
+
+.footer-form__submit:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.footer__copyright {
+  border-top: 1px solid #406181;
+}
+
+.footer__copyright-text {
+  padding: 28px 0 42px;
+  color: #aab3ba;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
 }
