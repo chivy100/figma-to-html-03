@@ -420,3 +420,80 @@ bottom: - => xuống */
   font-weight: 400;
   line-height: 1.75; /* 175% */
 }
+
+/* ============= about ============= */
+
+.about {
+  /* Tách một phần khoảng cách ra thành margin để tạo khoảng trắng
+   với section phía trên, tránh nền background dính sát section trước */
+  margin-top: 85px;
+  /* Ảnh nhỏ dùng position: absolute nên bị tách khỏi luồng bố cục.
+     Vì vậy chiều cao của section chỉ được tính theo ảnh lớn và nội dung còn lại.
+
+     Để tránh ảnh nhỏ bị tràn xuống section bên dưới,
+     cần tăng padding-bottom để chừa thêm không gian cho phần ảnh nhô ra.
+
+     206px = 85px (padding-bottom ban đầu)
+           + 121px (khoảng dịch xuống của ảnh nhỏ do top: 121px) */
+  padding: 85px 0 206px;
+  /* padding: 85px 0; */
+  /* Tạo khoảng trống bên trong section và vẫn giữ màu nền */
+
+  /* [phần trước]
+
+     85px khoảng trắng (margin)
+
+     ██████████████  <- nền
+     85px padding trên
+         nội dung
+     85px padding dưới
+     ██████████████
+
+     [phần sau] */
+}
+
+.about__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about__media {
+  /* Lấy width about__media chia cho width container */
+  width: 49%;
+}
+
+.about__content {
+  /* Lấy width about__content chia cho width container */
+  width: 40%;
+}
+
+.about__img {
+  position: relative;
+}
+
+.about__img--big {
+  /* Thẻ img mặc định là inline và căn theo baseline nên thường có khoảng hở nhỏ bên dưới
+   để chừa chỗ cho các ký tự có phần thò xuống (g, j, p, q, y).
+   Đổi sang display: flex hoặc block để ảnh hiển thị khít và loại bỏ khoảng hở này. */
+  display: flex;
+  object-fit: cover;
+  width: 512px;
+  height: 370px;
+  border-radius: 6px;
+  box-shadow: 0px 14px 28px 0px rgba(0, 0, 0, 0.07);
+}
+
+.about__img--small {
+  position: absolute;
+  top: 121px;
+  left: 238px;
+  object-fit: cover;
+  width: 332px;
+  height: 370px;
+  border-radius: 6px;
+}
+
+.about__btn {
+  margin-top: 38px;
+}
