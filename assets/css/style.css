@@ -683,3 +683,133 @@ bottom: - => xuống */
   column-gap: 28px;
   align-items: center;
 }
+
+/* ============= blog ============= */
+.blog {
+  padding: 85px 0;
+  background: #fff;
+}
+
+.blog__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog__content {
+  width: 40%;
+}
+
+.blog__heading {
+  max-width: 470px;
+}
+
+.blog__more {
+  /* Tạo khoảng cách phía trên 28px */
+  margin-top: 28px;
+  /* Hiển thị dạng inline-block thay cho dạng mặc định inline của thẻ <a> để vừa giữ trên cùng một dòng,
+     vừa có thể áp dụng margin, width, height */
+  display: inline-block;
+  /* Màu chữ xanh đậm */
+  color: #10375c;
+  /* Kích thước chữ 18px */
+  font-size: 1.8rem;
+  /* Độ đậm chữ Semi Bold */
+  font-weight: 600;
+  /* Chiều cao dòng gấp 1.56 lần cỡ chữ */
+  line-height: 1.56;
+  /* Thêm gạch chân cho văn bản */
+  text-decoration-line: underline;
+  /* Đẩy gạch chân xuống dưới chữ 5px */
+  text-underline-offset: 5px;
+}
+
+.blog__control {
+  margin-top: 28px;
+  justify-content: flex-start;
+}
+
+.blog__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+}
+
+.blog-item {
+  /* Giới hạn chiều rộng tối đa của card là 270px */
+  max-width: 270px;
+  /* Bo tròn 4 góc của card */
+  border-radius: 12px;
+  /* Tạo viền màu xám nhạt dày 1px */
+  border: 1px solid #e8ebee;
+  /* Tô màu nền trắng */
+  background: #fff;
+  /* Ẩn nội dung bị tràn ra ngoài card */
+  overflow: hidden;
+  /* Tạo hiệu ứng chuyển đổi mượt trong 0.5 giây */
+  transition: 0.5s;
+}
+
+/* Khi hover vào toàn bộ card bài viết */
+.blog-item:hover {
+  /* Thêm đổ bóng để tạo hiệu ứng nổi lên */
+  box-shadow: 0px 18px 50px 0px rgba(0, 0, 0, 0.05);
+  /* Ẩn màu viền hiện tại */
+  border-color: transparent;
+}
+
+/* Khi hover vào card thì ảnh bên trong phóng to lên */
+.blog-item:hover .blog-item__thumb {
+  transform: scale(1.1);
+}
+
+.blog-item__thumb {
+  /* Chiều rộng ảnh */
+  width: 270px;
+  /* Chiều cao ảnh */
+  height: 172px;
+  /* Bo góc trên trái và trên phải 12px */
+  border-radius: 12px 12px 0px 0px;
+  /* Giữ tỷ lệ ảnh, cắt phần dư để lấp đầy khung */
+  object-fit: cover;
+  /* Tạo hiệu ứng chuyển đổi mượt trong 0.25 giây */
+  transition: 0.25s;
+}
+
+.blog-item__wrap {
+  /* Chiều cao khung chứa ảnh */
+  height: 172px;
+  /* Ẩn phần ảnh bị tràn ra ngoài khi scale */
+  overflow: hidden;
+}
+
+.blog-item__body {
+  padding: 18px 22px;
+}
+
+.blog-item__heading {
+  color: #10375c;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.62; /* 162.5% */
+}
+
+.blog-item__desc {
+  margin-top: 10px;
+  color: #575f66;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.72; /* 171.429% */
+}
+
+.blog-item__more {
+  display: inline-block;
+  margin-top: 12px;
+  color: #10375c;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.blog-item__more:hover {
+  color: #2e80ce;
+}
