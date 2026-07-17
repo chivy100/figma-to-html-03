@@ -73,6 +73,51 @@ a {
   line-height: 1.67; /* 166.667% */
 }
 
+/* .control là khối chứa các nút điều khiển (.control__btn) */
+.control {
+  /* Sắp xếp các nút điều khiển (.control__btn) nằm trên cùng một hàng */
+  display: flex;
+  /* Tạo khoảng cách 18px giữa các nút (.control__btn) */
+  column-gap: 18px;
+  /* Căn giữa các nút (.control__btn) theo trục dọc */
+  align-items: center;
+}
+
+.control__btn {
+  /* Tạo nút hình tròn kích thước 36x36px */
+  width: 36px;
+  height: 36px;
+  /* Bo tròn 50% để tạo hình tròn */
+  border-radius: 50%;
+  /* Dùng Flexbox để căn giữa icon bên trong nút */
+  display: flex;
+  /* Căn giữa icon theo chiều ngang */
+  justify-content: center;
+  /* Căn giữa icon theo chiều dọc */
+  align-items: center;
+  /* Tạo viền xám bao quanh nút */
+  border: 1px solid #575f66;
+  /* Tô màu nền trắng cho nút */
+  background: #fff;
+  /* Đổi con trỏ chuột thành hình bàn tay khi hover */
+  cursor: pointer;
+  /* Tạo hiệu ứng chuyển đổi mượt trong 0.25 giây */
+  transition: 0.25s;
+}
+
+.control__btn:hover {
+  /* Đổi màu nền nút khi đưa chuột vào */
+  background: #2e80ce;
+  /* Đổi màu viền cùng màu với nền */
+  border-color: #2e80ce;
+  /* Đổi màu icon/chữ bên trong thành màu trắng */
+  color: #fff;
+}
+
+.control-icon--next {
+  /* Xoay icon 180 độ để đổi hướng mũi tên) */
+  rotate: 180deg;
+}
 /* ================= header ================= */
 
 .header {
@@ -83,12 +128,23 @@ a {
   min-height: 100vh;
 }
 
-/* ============= header-top ============= */
+/* ============= header top ============= */
 
-.header-top {
+.header__top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Khi muốn tạo thanh menu dính vào trang khi cuộn */
+  /* position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 60, 255, 0.578);
+  top: 0;
+  left: 0;
+  right: 0; 
+  position: fixed
+→ phần tử bị tách khỏi luồng
+→ không còn được margin:auto của container căn giữa giúp nữa
+→ phải tự căn bằng left/right hoặc left:50% + translateX(-50%)*/
 }
 
 .navbar__list {
@@ -496,4 +552,87 @@ bottom: - => xuống */
 
 .about__btn {
   margin-top: 38px;
+}
+
+/* ============= team ============= */
+
+.team__header {
+  /* Căn giữa nội dung bên trong (text, button, img,...) */
+  text-align: center;
+  /* Căn giữa chính khối .team-header trong phần tử cha
+       (chỉ có tác dụng khi phần tử có width/max-width nhỏ hơn phần tử cha) */
+  margin: 0 auto;
+}
+
+.team__cta {
+  margin-top: 38px;
+}
+
+.team__list {
+  margin-top: 70px;
+  column-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.team-item__thumb {
+  /* Cố định chiều cao ảnh là 290px */
+  height: 290px;
+  /* Kéo ảnh rộng bằng chiều rộng của khung (.team-item__img-bg),
+   kết hợp object-fit: cover để ảnh phủ kín khung mà không bị méo */
+  /* width: 100%; */
+  /* Giới hạn chiều rộng tối đa của ảnh bằng chiều rộng phần tử cha (.team-item),
+   giúp ảnh tự co lại khi phần tử cha nhỏ hơn ảnh gốc và không bị tràn khỏi khung chứa */
+  max-width: 100%;
+  /* Ảnh luôn lấp đầy khung, giữ tỷ lệ gốc,
+     phần dư sẽ bị cắt bớt thay vì méo ảnh */
+  object-fit: cover;
+  /* Loại bỏ khoảng hở nhỏ dưới ảnh do img mặc định là inline */
+  display: block;
+  transition: 0.5s;
+  /* width: 100%
+    → Luôn cố gắng rộng bằng phần tử cha
+
+     max-width: 100%
+    → Chỉ ngăn không cho rộng hơn phần tử cha
+    → Không đảm bảo ảnh sẽ lấp đầy khung */
+}
+
+.team-item__img-bg {
+  /* Bo tròn 4 góc khung ảnh 6px */
+  border-radius: 6px;
+  /* Tô màu nền phía sau ảnh */
+  background: #eaf6ff;
+  /* Tạo khoảng cách từ mép trên khung đến ảnh là 28px */
+  padding-top: 28px;
+  /* Ẩn phần ảnh bị tràn ra ngoài khung,
+     đồng thời giúp ảnh bị cắt theo border-radius */
+  overflow: hidden;
+}
+
+/* Khi rê chuột vào card (.team-item),
+   phóng to ảnh lên 110% để tạo hiệu ứng nổi bật */
+.team-item:hover .team-item__thumb {
+  transform: scale(1.1);
+}
+
+.team-item__name {
+  margin-top: 12px;
+  color: #10375c;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.75; /* 175% */
+}
+
+.team-item__desc {
+  color: #575f66;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.86; /* 185.714% */
+}
+
+.team__control {
+  margin-top: 38px;
+  justify-content: center;
 }
